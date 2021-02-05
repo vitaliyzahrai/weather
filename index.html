@@ -19,7 +19,7 @@
 			<div class="bg_image"><img v-bind:src="weatherInfo.icon" class="bg_image_big" alt=""></div>
 			<div class="text_info">
 				<div class="text_weather"><span>{{weatherInfo.name}}</span></div>
-				<div class="location_weather"><span > {{сity}} - {{location.currentDate}}</span></div>
+				<div class="location_weather"><span > {{сity.name}} - {{location.currentDate}}</span></div>
 			</div>
 		</div>
 
@@ -32,10 +32,10 @@
 				<li class="cloudiness">Cloudiness: <span>{{dayInfo.cloudiness}} %</span></li>
 			</ul>
 			<div class="slideshow">
-			  <div class="mySlides" v-for="day in daysInfo" :key="day">
+			  <div class="mySlides" v-for="(day, index) in daysInfo" :key="day">
 			  	<ul>
 			  		<li><img v-bind:src="'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png'" class="img_ms"></li>
-			  		<li class="name_day">{{ days[(new Date(day.dt).getDay())] }}</li>
+			  		<li class="name_day">{{ days[new Date(new Date().setDate(new Date().getDate() + index)).getDay()] }}</li>
 			  		<li class="tamp_day">{{Math.ceil(day.temp.day)}}°C</li>
 			  		<li class="tamp_night">{{Math.ceil(day.temp.night)}}°C</li>
 			  	</ul>
