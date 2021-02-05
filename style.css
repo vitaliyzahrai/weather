@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Dosis', sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.weather_baner {
+  background-image: url("image/bg_1.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 600px;
+  position: absolute;
+}
+.weather_baner .weather {
+  position: relative;
+  width: 580px;
+  margin: 80px auto;
+  height: 440px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-filter: drop-shadow(0px 0px 40px #000);
+          filter: drop-shadow(0px 0px 40px #000);
+}
+.weather_baner .weather .left_block {
+  width: 290px;
+  text-align: center;
+  background-image: url("image/bg_2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  font-weight: 200;
+  color: #fff;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-right: 1px solid #771921;
+}
+.weather_baner .weather .left_block .bg_image {
+  margin: 65px auto;
+}
+.weather_baner .weather .left_block .bg_image .bg_image_big {
+  width: 175px;
+  height: 175px;
+}
+.weather_baner .weather .left_block .text_info {
+  position: absolute;
+  width: 290px;
+  bottom: 0;
+  border-bottom-left-radius: 6px;
+  opacity: 0.9;
+}
+.weather_baner .weather .left_block .text_info .text_weather {
+  padding: 30px 0;
+  font-weight: 200;
+  font-size: 36px;
+  line-height: 30px;
+  background-color: #2d1f25;
+}
+.weather_baner .weather .left_block .text_info .location_weather {
+  padding: 30px 0;
+  font-weight: 300;
+  font-size: 22px;
+  background-color: #761f23;
+  border-bottom-left-radius: 6px;
+}
+.weather_baner .weather .right_block {
+  width: 290px;
+  padding: 30px 40px;
+  background-color: #fff;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.weather_baner .weather .right_block .text {
+  list-style: none;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #771921;
+}
+.weather_baner .weather .right_block .text .feels, .weather_baner .weather .right_block .text .wind, .weather_baner .weather .right_block .text .humidity, .weather_baner .weather .right_block .text .cloudiness {
+  padding-top: 6px;
+  color: #771921;
+  font-size: 22px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.weather_baner .weather .right_block .text .temp {
+  padding-top: 0;
+  padding-bottom: 20px;
+  color: #771921;
+  text-align: center;
+  font-size: 85px;
+  line-height: 80px;
+  font-weight: 200;
+}
+.weather_baner .weather .right_block .text .cloudiness {
+  padding-bottom: 10px;
+}
+.weather_baner .weather .right_block .text span {
+  float: right;
+}
+.weather_baner .weather .right_block .slideshow {
+  width: 210px;
+  position: absolute;
+}
+.weather_baner .weather .right_block .slideshow .slick-arrow {
+  position: absolute;
+  z-index: 1;
+}
+.weather_baner .weather .right_block .slideshow .slick-prev {
+  left: -25px;
+  background: url("image/back.png");
+  background-size: cover;
+  background-position: center;
+}
+.weather_baner .weather .right_block .slideshow .slick-prev:active {
+  opacity: 0.4;
+}
+.weather_baner .weather .right_block .slideshow .slick-next {
+  right: -25px;
+  background: url("image/next.png");
+  background-size: cover;
+  background-position: center;
+}
+.weather_baner .weather .right_block .slideshow .slick-next:active {
+  opacity: 0.4;
+}
+.weather_baner .weather .right_block .slideshow .slick-prev::before, .weather_baner .weather .right_block .slideshow .slick-next::before {
+  content: '';
+}
+.weather_baner .weather .right_block .slideshow .mySlides {
+  text-align: center;
+  width: 65px;
+  margin: 5px 5px;
+}
+.weather_baner .weather .right_block .slideshow .mySlides ul {
+  list-style: none;
+}
+.weather_baner .weather .right_block .slideshow .mySlides ul .img_ms {
+  width: 40px;
+  height: 40px;
+  margin: 10px auto;
+}
+.weather_baner .weather .right_block .slideshow .mySlides ul .name_day {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #771921;
+  font-weight: 300;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #771921;
+}
+.weather_baner .weather .right_block .slideshow .mySlides ul .tamp_day, .weather_baner .weather .right_block .slideshow .mySlides ul .tamp_night {
+  font-weight: 400;
+  font-size: 16px;
+  padding-top: 5px;
+  color: #771921;
+}
+.weather_baner .weather .right_block .slideshow .mySlides ul .tamp_night {
+  color: #000;
+}

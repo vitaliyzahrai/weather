@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather</title>
+  <link rel="stylesheet" type="text/css" href="library/slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="library/slick/slick-theme.css">
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400&display=swap" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+<section id="app">	
+<div class="weather_baner">
+	<div class="flex-container weather">
+
+		<div class="left_block">
+			<div class="bg_image"><img v-bind:src="weatherInfo.icon" class="bg_image_big" alt=""></div>
+			<div class="text_info">
+				<div class="text_weather"><span>{{weatherInfo.name}}</span></div>
+				<div class="location_weather"><span > {{сity}} - {{location.currentDate}}</span></div>
+			</div>
+		</div>
+
+		<div class="right_block">
+			<ul class="text">
+				<li class="temp">{{dayInfo.temp}} °C</li>
+				<li class="feels">Feels like: <span>{{dayInfo.feels}} °C</span></li>
+				<li class="wind">Wind: <span>{{dayInfo.winds}} m/s</span></li>
+				<li class="humidity">Humidity: <span>{{dayInfo.humid}} %</span></li>
+				<li class="cloudiness">Cloudiness: <span>{{dayInfo.cloudiness}} %</span></li>
+			</ul>
+			<div class="slideshow">
+			  <div class="mySlides" v-for="day in daysInfo" :key="day">
+			  	<ul>
+			  		<li><img v-bind:src="'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png'" class="img_ms"></li>
+			  		<li class="name_day">{{ days[(new Date(day.dt).getDay())] }}</li>
+			  		<li class="tamp_day">{{Math.ceil(day.temp.day)}}°C</li>
+			  		<li class="tamp_night">{{Math.ceil(day.temp.night)}}°C</li>
+			  	</ul>
+			  </div>
+			</div>
+		</div>
+
+	</div>
+</div>
+</section>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="library/slick/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- <script src="js/slick.js"></script> -->
+<script src="js/weather.js"></script>
+
+	
+</body>
+</html>
