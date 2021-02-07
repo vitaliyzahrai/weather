@@ -4,57 +4,85 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Weather</title>
-  <link rel="stylesheet" type="text/css" href="library/slick/slick.css">
-  <link rel="stylesheet" type="text/css" href="library/slick/slick-theme.css">
-	<link rel="stylesheet" href="style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400&display=swap" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<section id="app">	
-<div class="weather_baner">
-	<div class="flex-container weather">
+		
+	<div
+		id="app"
+		class="weather_baner"
+		v-bind:style="{ backgroundImage: 'url(' + city.img + ')' }"
+	>
 
-		<div class="left_block">
-			<div class="bg_image"><img v-bind:src="weatherInfo.icon" class="bg_image_big" alt=""></div>
-			<div class="text_info">
-				<div class="text_weather"><span>{{weatherInfo.name}}</span></div>
-				<div class="location_weather"><span > {{сity}} - {{location.currentDate}}</span></div>
-			</div>
-		</div>
+		<div class="overflow-container">
+			<div class="box">
 
-		<div class="right_block">
-			<ul class="text">
-				<li class="temp">{{dayInfo.temp}} °C</li>
-				<li class="feels">Feels like: <span>{{dayInfo.feels}} °C</span></li>
-				<li class="wind">Wind: <span>{{dayInfo.winds}} m/s</span></li>
-				<li class="humidity">Humidity: <span>{{dayInfo.humid}} %</span></li>
-				<li class="cloudiness">Cloudiness: <span>{{dayInfo.cloudiness}} %</span></li>
-			</ul>
-			<div class="slideshow">
-			  <div class="mySlides" v-for="(day, index) in daysInfo" :key="day">
-			  	<ul>
-			  		<li><img v-bind:src="'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png'" class="img_ms"></li>
-			  		<li class="name_day">{{ days[new Date(new Date().setDate(new Date().getDate() + index)).getDay()] }}</li>
-			  		<li class="tamp_day">{{Math.ceil(day.temp.day)}}°C</li>
-			  		<li class="tamp_night">{{Math.ceil(day.temp.night)}}°C</li>
-			  	</ul>
-			  </div>
+				<div v-if="loader" class="loader-container">
+					<img src="image/loader.gif" alt="loader">
+				</div>
+				<!-- /.loader-container -->
+
+				<div v-if="notify" class="notification-container">
+					{{notify}}
+				</div>
+				<!-- /.notification-container -->
+
+				<div v-if="!loader && !notify" class="weather-container">
+
+					<div 
+						class="left-block"
+						v-bind:style="{ backgroundImage: 'url(' + city.img + ')' }"
+					>
+						<div class="condition-img">
+							<img
+								v-if="condition.icon"
+								v-bind:src="condition.icon" alt="icon"
+							>
+						</div>
+						<div class="condition-text">{{condition.main}}</div>
+						<div class="location-and-date">{{city.name}} - {{date}}</div>
+					</div>
+					<!-- /.left-block -->
+
+					<div class="right-block">
+						<ul class="text">
+							<li class="temp">{{tempInfo.temp}} °C</li>
+							<li>Feels like: <span>{{tempInfo.feels_like}} °C</span></li>
+							<li>Wind: <span>{{tempInfo.wind_speed}} m/s</span></li>
+							<li>Humidity: <span>{{tempInfo.humidity}} %</span></li>
+							<li>Cloudiness: <span>{{tempInfo.clouds}} %</span></li>
+						</ul>
+						<!-- /.text -->
+						<div class="slides">
+							
+							<div class="slide" v-for="(day, index) in daysWeather" :key="day">
+								<img v-bind:src="'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png'">
+								<div class="day">
+									{{ getWeekDay(new Date(new Date().setDate(new Date().getDate() + index + 1))) }}
+									{{ getDay(new Date(new Date().setDate(new Date().getDate() + index + 1))) }}
+								</div>
+								<div class="temp">{{Math.ceil(day.temp.min)}} °C</div>
+								<div class="temp night">{{Math.ceil(day.temp.max)}} °C</div>
+							</div>
+
+						</div>
+						<!-- /.slides -->
+					</div>
+					<!-- /.right-block -->
+
+				</div>
+				<!-- /.weather-container -->
 			</div>
+			<!-- /.box -->
 		</div>
+		<!-- /.overflow-container -->
 
 	</div>
-</div>
-</section>
+	<!-- #app .weather_baner -->
 
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="library/slick/slick.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<!-- <script src="js/slick.js"></script> -->
-<script src="js/weather.js"></script>
-
-	
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<script src="weather.js"></script>
 </body>
 </html>
